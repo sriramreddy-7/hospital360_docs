@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital360 HIMS Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px 40px;
+            text-align: center;
+        }
+        nav {
+            background-color: #f1f1f1;
+            padding: 15px 40px;
+        }
+        nav a {
+            margin-right: 20px;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        section {
+            padding: 20px 40px;
+            background-color: #fff;
+            margin: 20px auto;
+            border-radius: 8px;
+            max-width: 1000px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #007bff;
+        }
+        code {
+            background-color: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #007bff;
+            color: #fff;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hospital360 HIMS Documentation</h1>
+        <p>Hospital Information Management System - Website Overview & User Guide</p>
+    </header>
+    <nav>
+        <a href="#overview">Overview</a>
+        <a href="#features">Features</a>
+        <a href="#roles">User Roles</a>
+        <a href="#subdomains">Subdomains</a>
+        <a href="#login">Login & Dashboard Flow</a>
+    </nav>
+
+    <section id="overview">
+        <h2>1. Overview</h2>
+        <p>Hospital360 HIMS is a multi-tenant hospital management system designed to manage patient records, staff, appointments, billing, pharmacy, labs, and other hospital operations efficiently. The system supports multiple hospitals under a single SaaS platform while maintaining secure access for each hospital and role.</p>
+    </section>
+
+    <section id="features">
+        <h2>2. Key Features</h2>
+        <ul>
+            <li>Patient Management (registration, records, history)</li>
+            <li>Doctor & Staff Management</li>
+            <li>Appointment Scheduling</li>
+            <li>Billing & Invoicing</li>
+            <li>Pharmacy & Inventory Management</li>
+            <li>Laboratory Management</li>
+            <li>Role-based Dashboards and Permissions</li>
+            <li>Multi-Hospital Support (tenant system)</li>
+            <li>Super Admin Dashboard for SaaS owner</li>
+            <li>Audit Logs & Security Notifications</li>
+        </ul>
+    </section>
+
+    <section id="roles">
+        <h2>3. User Roles</h2>
+        <p>The system defines different roles with specific permissions:</p>
+        <ul>
+            <li><strong>Super Admin:</strong> Full SaaS control, manage all hospitals, subscriptions, users, roles.</li>
+            <li><strong>Hospital Admin:</strong> Manage staff, departments, billing, and hospital-level configurations.</li>
+            <li><strong>Consultant Doctor:</strong> Access patient consultation, prescriptions, and reports.</li>
+            <li><strong>Junior Doctor:</strong> Assist in consultations and patient follow-ups.</li>
+            <li><strong>Receptionist:</strong> Handle patient registration and appointments.</li>
+            <li><strong>Pharmacy Staff:</strong> Manage medicine inventory and prescriptions.</li>
+            <li><strong>Lab Technician:</strong> Handle lab tests and reports.</li>
+        </ul>
+    </section>
+
+    <section id="subdomains">
+        <h2>4. Subdomains</h2>
+        <p>The system uses subdomains to separate SaaS admin and hospital portals:</p>
+        <ul>
+            <li><code>hospital360.tech</code> - Main public website and login page</li>
+            <li><code>app.hospital360.tech</code> - Tenant portal for hospital staff (all roles)</li>
+            <li><code>super.hospital360.tech</code> - SaaS Super Admin dashboard</li>
+            <li><code>{hospital_code}.hospital360.tech</code> (optional) - Individual hospital tenant portal</li>
+        </ul>
+    </section>
+
+    <section id="login">
+        <h2>5. Login & Dashboard Flow</h2>
+        <ol>
+            <li>All users log in at <code>https://hospital360.tech/accounts/login/</code>.</li>
+            <li>System authenticates the user and checks their role.</li>
+            <li>Super Admin → redirected to <code>https://app.hospital360.tech/dashboard/</code>.</li>
+            <li>Hospital Staff → redirected to hospital-specific portal: <code>{hospital_code}.hospital360.tech</code>.</li>
+            <li>Within the hospital portal, dashboards and features are role-based.</li>
+            <li>Login audit emails and notifications are sent upon successful login.</li>
+        </ol>
+        <p>This flow ensures a single login page while maintaining secure access per hospital and role.</p>
+    </section>
+
+    <section id="additional">
+        <h2>6. Additional Notes</h2>
+        <ul>
+            <li>All hospital staff and admins use the same portal; roles determine their dashboard access.</li>
+            <li>No role-based subdomains exist; roles are managed internally in Django.</li>
+            <li>The system is fully multi-tenant and scalable for new hospitals.</li>
+            <li>Audit logs track user login, role access, and actions for security and compliance.</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>© 2025 Hospital360 HIMS | All Rights Reserved</p>
+    </footer>
+</body>
+</html>
